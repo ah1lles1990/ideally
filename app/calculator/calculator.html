@@ -1,0 +1,31 @@
+<div id="myCalculator">
+	<main>
+		<section ng-class="lamp.alias" ng-repeat="lamp in calcCtrl.lamps">
+			<div>
+				<h4>{{lamp.title}}</h4>
+				<p>{{lamp.watts}}</p>
+				<p>{{lamp.cost_per_year}}</p>
+			</div>
+		</section>
+	</main>
+	<form>
+		<div>
+			<h4>Lumens</h4>
+			<p>Brighttness <br> of bulb</p>
+			<select ng-model="calcCtrl.opts.lumen" ng-options="lumens for lumens in [375,600,900,1125,1600]" ng-change="calcCtrl.calculate()">
+				<option value="">Select</option>
+			</select>
+		</div>
+		<div>
+			<h4>kWh</h4>
+			<p>Kilowatt-<br>hour cost</p>
+			<input type="number" ng-model="calcCtrl.opts.cost_kilowatt" ng-change="calcCtrl.calculate()"> cents
+		</div>
+		<div>
+			<h4>Hours</h4>
+			<p>Usage <br>per day</p>
+			<input type="number" ng-model="calcCtrl.opts.hours_per_day" ng-change="calcCtrl.calculate()">
+		</div>
+	</form>
+</div>	
+

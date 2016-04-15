@@ -1,0 +1,34 @@
+<div class="edit board my-repeat-animation" ng-repeat="board in boardCtrl.boards">
+  <div class="caption">
+      <button type="button" class="top-right-corner" ng-click="boardCtrl.removeBoard(board.id)" title="Remove this board">
+          <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      <button type="button" class="top-left-corner" ng-click="boardCtrl.editBoard(board.id, board)" title="Save changes">
+          <span class="glyphicon glyphicon-edit"></span>
+      </button>
+      <div>
+        <input ng-model="board.title" type="text" class="medium" placeholder="Board Title">
+      </div>
+      <div>
+        <input ng-model="board.description" type="text" placeholder="Board description.">
+      </div>
+      <div class="bottom x-small">
+        <input type="checkbox" ng-model="board.isPublic">
+         Board is Public</div>
+      <a ng-href="#/boards/{{ board.id }}/notes" type="button" class="view bottom-right-corner">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+      </a>
+  </div>
+</div>
+<div class="create board">
+  <div class="caption">
+      <form name="boardCreateForm" ng-submit="boardCreateForm.$valid && boardCtrl.addBoard(boardCtrl.newBoard)">
+          <fieldset>
+              <div><input ng-model="boardCtrl.newBoard.title" type="text" class="medium" placeholder="Board Title" required></div>
+              <div><input ng-model="boardCtrl.newBoard.description" type="text" placeholder="Board description." required></div>
+              <div class="bottom x-small"><input type="checkbox" ng-model="boardCtrl.newBoard.isPublic"> Board is Public</div>
+              <button type="submit" class="bottom-right-corner" title="Add this board"><span class="glyphicon glyphicon-plus"></span></button>
+          </fieldset>
+      </form>
+  </div>
+</div>
